@@ -1,6 +1,29 @@
 import React, {useState} from 'react'
 import {addFriend} from '../store/actions'
 import {connect} from 'react-redux'
+import styled from 'styled-components'
+
+const CenterDiv = styled.div`
+display:flex;
+justify-content:center;
+align-items:center;
+background-color:mistyrose;
+width:30%;
+margin:auto;
+border:3px crimson solid;
+`
+
+const StyledButton = styled.button`
+color:ivory;
+background-color:crimson;
+border:none;
+padding:15px;
+margin:20px auto;
+width:200px;
+`
+
+const StyledInput = styled.input`
+width:190px;`
 
 const blankFriend = {
     name: '',
@@ -24,33 +47,35 @@ const AddFriend = (props) => {
     }
 
     return(
-        <div>
+        <CenterDiv>
 <form onSubmit={onSubmit}>
     <h4>Name</h4>
-    <input 
+    <StyledInput 
     type="text"
     name="name"
     value={newFriend.name}
     onChange={onChange}
     />
      <h4>Age</h4>
-    <input 
+    <StyledInput 
     type="text"
     name="age"
     value={newFriend.age}
     onChange={onChange}
     />
      <h4>Email</h4>
-    <input 
+    <StyledInput 
     type="email"
     name="email"
     value={newFriend.email}
     onChange={onChange}
     />
-    <button type='submit'>Add New Friend to List</button>
+    <div>
+    <StyledButton type='submit'>Add New Friend to List</StyledButton>
+    </div>
 </form>
 
-        </div>
+        </CenterDiv>
     )
 
 }
