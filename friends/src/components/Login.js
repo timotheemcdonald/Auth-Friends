@@ -1,22 +1,28 @@
 import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
 import axiosWithAuth from '../utils/axiosWithAuth'
+import {useHistory} from 'react-router-dom'
+
+const RedSpan = styled.span`
+color: crimson;
+`
 
 const blankForm = {
-    credentials: {
     username: '',
     password:''
-    }
+    
 }
 
 const Login = () => {
 
     const [form, setForm] = useState(blankForm)
 
+    const history = useHistory()
+
     const onSubmit = (event) => {
         event.preventDefault()
         axiosWithAuth()
-        .post('/api/login', form.credentials)
+        .post('/api/login', form)
         .then(value => {
             console.log(value, 'this is value in submit button')
             localStorage.setItem('token', value.data)
@@ -38,18 +44,20 @@ const Login = () => {
 
     return(
         <div>
-           Enter Username and Password:
+            <div>
+           Enter <RedSpan>Lambda School</RedSpan> and <RedSpan>{`i<3Lambd4`}</RedSpan>:
+           </div>
             <form onSubmit={onSubmit}>
                 <input 
                 type="text"
                 name="username"
-                value={form.credentials.name}
+                value={form.username}
                 onChange={onChange}
                 />
                 <input 
                 type="password"
                 name="password"
-                value={form.credentials.password}
+                value={form.password}
                 onChange={onChange}
                 />
                 <button>Login</button>

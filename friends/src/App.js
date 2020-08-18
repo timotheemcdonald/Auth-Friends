@@ -2,9 +2,14 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
 import styled from 'styled-components'
 
+import {connect} from 'react-redux'
+import {fetchFriends} from '../src/store/actions'
+
 import './App.css';
 
 import Login from './components/Login'
+import PrivateRoute from './components/PrivateRoute'
+import FriendsList from './components/FriendsList'
 
 const Details = styled.header`
 
